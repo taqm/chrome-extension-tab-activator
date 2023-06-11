@@ -3,14 +3,14 @@
   "scripts": {
     "clean": "rimraf dist",
     "build:static": "cpx \"static/**/*\" dist",
-    "build:popup": "esbuild src/popup-entry.tsx --bundle --outfile=dist/popup.js",
-    "build:background": "esbuild src/background-entry.ts --bundle --outfile=dist/background.js",
+    "build:popup": "esbuild src/popup-entry.tsx --bundle --outfile=dist/popup.js --target=es2015",
+    "build:background": "esbuild src/background-entry.ts --bundle --outfile=dist/background.js --target=es2015",
     "prebuild": "npm run clean",
     "build": "run-p build:*",
 
     "watch:static": "cpx \"static/**/*\" dist -w -v",
-    "watch:popup": "esbuild src/popup-entry.tsx --bundle --outfile=dist/popup.js --watch",
-    "watch:background": "esbuild src/background-entry.ts --bundle --outfile=dist/background.js --watch",
+    "watch:popup": "esbuild src/popup-entry.tsx --bundle --outfile=dist/popup.js --watch --target=es2015",
+    "watch:background": "esbuild src/background-entry.ts --bundle --outfile=dist/background.js --watch --target=es2015",
     "prewatch": "npm run clean",
     "watch": "run-p watch:*"
   },
