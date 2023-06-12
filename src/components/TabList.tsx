@@ -27,7 +27,6 @@ const TabList: React.FC<Props> = (props) => {
           ref={ref}
           type="text"
           value={text}
-          placeholder="filter by title"
           style={{ width: '100%' }}
           onChange={(ev) => {
             setText(ev.target.value);
