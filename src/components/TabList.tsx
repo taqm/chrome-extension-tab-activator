@@ -12,7 +12,9 @@ const TabList: React.FC<Props> = (props) => {
 
   const onClickHandler = (id: string) => () => props.applyFocus(id);
   const tabs = props.tabsLoadble.getOrThrow();
-  const filtered = tabs.filter((tab) => tab.title.includes(text));
+  const filtered = tabs.filter((tab) =>
+    tab.title.toLocaleLowerCase().includes(text.toLocaleLowerCase()),
+  );
 
   const ref = React.useRef<HTMLInputElement>(null);
 
