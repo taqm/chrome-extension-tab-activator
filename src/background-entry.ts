@@ -1,17 +1,22 @@
 const getGoogleMeetTabs = (sender: chrome.runtime.MessageSender) =>
   chrome.tabs.query({}, (res) => {
-    const tabs = res.map((v) => ({
+    const tabs = res.map<BrowserTabInfo>((v) => ({
       id: String(v.id),
       title: v.title!,
       url: v.url!,
+      faviconUrl:
+        v.favIconUrl ||
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOUqwcAAMEAnwarUJAAAAAASUVORK5CYII=',
     }));
 
-    chrome.runtime.sendMessage(sender.id!, {
+    const result: GetTabsResult = {
       type: 'GET_TABS_RESULT',
       payload: {
         tabs,
       },
-    } as GetTabsResult);
+    };
+
+    chrome.runtime.sendMessage(sender.id!, result);
   });
 
 chrome.runtime.onMessage.addListener(

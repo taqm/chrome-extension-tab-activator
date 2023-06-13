@@ -2,6 +2,7 @@ type BrowserTabInfo = {
   id: string;
   title: string;
   url: string;
+  faviconUrl: string;
 };
 
 type GetTabsRequest = {

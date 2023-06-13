@@ -41,17 +41,34 @@ const TabList: React.FC<Props> = (props) => {
               key={tab.id}
               className="pure-menu-item"
               onClick={onClickHandler(tab.id)}
+              title={tab.title}
             >
               <div
                 className="pure-menu-link"
                 style={{
                   cursor: 'pointer',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
+                  display: 'flex',
+                  alignContent: 'center',
                 }}
               >
-                {tab.title}
+                <img
+                  src={tab.faviconUrl}
+                  style={{
+                    width: 16,
+                    height: 16,
+                    marginRight: 8,
+                  }}
+                ></img>
+                <div
+                  style={{
+                    flex: 1,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {tab.title}
+                </div>
               </div>
             </li>
           ))}
